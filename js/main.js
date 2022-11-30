@@ -4,14 +4,17 @@ createApp({
     data(){
         return{
             email:[],
+            emailTotali:[],
         }
     },
     methods:{
         fetchData(){
             axios.get("https://flynn.boolean.careers/exercises/api/random/mail")
             .then((resp)=>{
-                console.log(resp.data.response);
                 this.email.push(resp.data.response);
+                if (this.email.length == 10) {
+                    this.emailTotali = this.email;
+                }
             })
         },
         generaDieci(){
